@@ -23,7 +23,6 @@ note: 須留意有些介面縱使在移動裝置
 }
 
 html {
-  min-height: 100vh;
   line-height: 1.618;
 }
 
@@ -72,13 +71,66 @@ button {
 }
 
 body {
-  background-color: #333;
+  background-color: #1a1a17;
   color: #f2f2dd;
   font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont,'palatino', serif;
   position: relative;
+  overflow: auto;
 }
 
-.center {
+#root {
+  min-height: 100vh;
+}
+
+.panel {
+  padding: 2rem 1rem;
+  background-color: #3a3a37;
+  border: 1px solid rgba(241, 241, 82, 0.75);
+  -webkit-box-shadow: 0 0 1.5rem rgba(241, 241, 82, 0.35), 0 0 0.5rem rgba(241, 241, 82, 0.2) inset;
+          box-shadow: 0 0 1.5rem rgba(241, 241, 82, 0.35), 0 0 0.5rem rgba(241, 241, 82, 0.2) inset;
+  border-radius: 0.8rem;
+}
+
+@media screen and (min-width: 992px) {
+  .panel {
+    width: 80vw;
+    height: 80vh;
+  }
+}
+
+.panel h1 {
+  text-align: center;
+}
+
+.panel .wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.panel .wrap .monitor {
+  margin-bottom: 5rem;
+  height: 200px;
+}
+
+@media screen and (min-width: 992px) {
+  .panel .wrap .monitor {
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+  }
+}
+
+.panel .wrap .monitor div {
+  width: 300px;
+  height: 100%;
+  border: 1px solid #f2f2f2;
+}
+
+.center, #root, .panel .wrap .monitor {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -8,9 +8,40 @@ body
     color: $color-theme-text-0
     font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont,'palatino', serif
     position: relative
+    overflow: auto
 
+#root
+    min-height: 100vh
+    @extend .center
 // TEMP
 .panel
+    padding: 2rem 1rem
+    @include rwd-for($from:'lg')
+        width: 80vw
+        height: 80vh
+    background-color: #3a3a37
+    border: 1px solid rgba($color-theme-0, 0.75)
+    box-shadow: 0 0 1.5rem rgba($color-theme-0, 0.35), 0 0 0.5rem rgba($color-theme-0, 0.2) inset
+    border-radius: 0.8rem
+
+    h1 
+        text-align: center
+
+    .wrap
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-around
+        .monitor
+            margin-bottom: 5rem
+            height: 200px
+            @extend .center
+            @include rwd-for($from: 'lg')
+                flex-basis: 50%
+            div
+                width: 300px
+                height: 100%
+                border: 1px solid #f2f2f2
+            
 
 // TEMP END
 
