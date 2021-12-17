@@ -1,0 +1,28 @@
+@import './_rwd'
+*
+    margin: 0
+    padding: 0
+    &, &::before, &::after
+        box-sizing: border-box
+html
+    min-height: 100vh
+    line-height: 1.618
+    @include rwd-for($from: lg)
+        font-size: 21px
+    @include rwd-for($from: md)
+        font-size: 18px
+    @include rwd-for($to: md)
+        font-size: 16px
+a
+    text-decoration: none
+    &:link, &:visited
+        color: initial
+    &:active
+        filter: invert(0.3)
+img
+    max-width: 100%
+    height: auto
+ul
+    list-style: none
+button
+    border: none

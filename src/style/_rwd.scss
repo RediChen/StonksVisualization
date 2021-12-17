@@ -1,0 +1,121 @@
+/*                   *\
+    RWD 設定模組
+固定由 reset.sass 匯入
+\*                   */
+//=== RWD breakpoint param 斷點尺寸清單
+// p.s. 因為 sass 不支援 map 的斷行寫法，因此此檔採用 scss。
+// Reference: Boostrap
+$breakpoints: (
+    //name 區間名稱: minimum width 區間的下界
+    //============ ┌→ mobile
+    xxs: 0,
+    xs: 380px,
+    sm: 576px,
+    //==  tablet ←┐└→ mobile
+    md: 768px,
+    //==  tablet ←┘┌→ desktop
+    lg: 992px,
+    xl: 1280px,
+    xxl: 1536px
+    //============ └→ desktop
+) !default;
+//* 將尺寸名稱轉換成 px
+@function lower-bound($size-name) {
+    //回傳區間的下界 size (px)
+    //若無下界，則回傳 null
+    $min: map-get($breakpoints, $size-name);
+    @if not $min {
+        @error "此 rwd 系統的尺寸中沒有 " + $size-name + "。";
+    }
+    @return if($min != 0, $min, null);
+}
+@function next-breakpoint($size-name) {
+    // for upper-bound, 回傳區間上界的 size-name
+    $i: index(map-keys($breakpoints), $size-name);
+    @if not $i {
+        @error "此 rwd 系統的尺寸中沒有 " + $size-name + "。";
+    }
+    @if $i < length(map-keys($breakpoints)) {
+        @return nth(map-keys($breakpoints), $i + 1);
+    } @else {
+        @return null;
+    }
+}
+@function upper-bound($size-name) {
+    //回傳區間的上界 size (px)。
+    //若無上界，則回傳 null
+    $size-name: next-breakpoint($size-name);
+    @if $size-name == null {
+        @return null;
+    } @else {
+        $bound: map-get($breakpoints, $size-name) - 0.02px;
+        //因為 media queries 4 的不等號寫法尚未被普遍支援
+        //在此採用的 walkaround 是將上界下扣 0.02px
+        //原因有二：(1)縮小漏網的空隙 (2)Safari 的概算 bug
+        @return $bound;
+    }
+}
+// 使用 media queries
+@mixin rwd-up-from($name) {
+    $bound: lower-bound($name);
+    @if $bound {
+        @media screen and (min-width: $bound) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+@mixin rwd-down-from($name) {
+    $bound: upper-bound($name);
+    @if $bound {
+        @media screen and (max-width: $bound) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+@mixin rwd-between($from, $to) {
+    $lower-bound: lower-bound($from);
+    $upper-bound: upper-bound($to);
+    @if $lower-bound == null {
+        @include rwd-down-from($upper-bound);
+    } @else if $upper-bound == null {
+        @include rwd-up-from($lower-bound);
+    } @else if $lower-bound <= $upper-bound {
+        @error "不允許由大到小的順序，或是單點範圍的設定。";
+    } @else {
+        @media screen and (min-width: $lower-bound) and (max-width: $upper-bound) {
+            @content;
+        }
+    }
+}
+// API
+@mixin rwd-for($from: null, $to: null) {
+    @if $from == null and $to == null {
+        @error "請使用 $from、$to 來指定裝置尺寸。";
+    } @else if $to == null {
+        @include rwd-up-from($from) {
+            @content;
+        }
+    } @else if $from == null {
+        @include rwd-down-from($to) {
+            @content;
+        }
+    } @else {
+        @include rwd-between($from, $to) {
+            @content;
+        }
+    }
+}
+
+/*
+note: 16px 的 base size 是常用的初始數值
+idea: 以 md 之下的區間為 16 px
+每 40px 將基本 fz 縮小一個 px。直到 12px。
+    而在 md 之上則是換成 18px
+
+note: 須留意有些介面縱使在移動裝置
+也必須確保 fz=16px e.g. input
+*/
