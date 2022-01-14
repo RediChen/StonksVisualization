@@ -12,6 +12,7 @@ idea: 以 md 之下的區間為 16 px
 note: 須留意有些介面縱使在移動裝置
 也必須確保 fz=16px e.g. input
 */
+@import url(d:\AppDev\flask\stonks_visualization\node_modules\react-vis\dist\style.css);
 * {
   margin: 0;
   padding: 0;
@@ -73,7 +74,7 @@ button {
 body {
   background-color: #1a1a17;
   color: #f2f2dd;
-  font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont,'palatino', serif;
+  font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont,'palatino', sans-serif;
   position: relative;
   overflow: auto;
 }
@@ -84,6 +85,7 @@ body {
 
 .panel {
   padding: 2rem 1rem;
+  min-height: 800px;
   background-color: #3a3a37;
   border: 1px solid rgba(241, 241, 82, 0.75);
   -webkit-box-shadow: 0 0 1.5rem rgba(241, 241, 82, 0.35), 0 0 0.5rem rgba(241, 241, 82, 0.2) inset;
@@ -114,7 +116,9 @@ body {
 
 .panel .wrap .monitor {
   margin-bottom: 5rem;
-  height: 200px;
+  width: 80%;
+  height: 50vh;
+  border: 1px solid #f2f2f2;
 }
 
 @media screen and (min-width: 992px) {
@@ -124,10 +128,9 @@ body {
   }
 }
 
-.panel .wrap .monitor div {
-  width: 300px;
-  height: 100%;
-  border: 1px solid #f2f2f2;
+.panel .wrap .monitor > .rv-xy-plot svg {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .center, #root, .panel .wrap .monitor {
