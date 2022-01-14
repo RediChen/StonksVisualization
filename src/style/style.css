@@ -12,7 +12,6 @@ idea: 以 md 之下的區間為 16 px
 note: 須留意有些介面縱使在移動裝置
 也必須確保 fz=16px e.g. input
 */
-@import url(d:\AppDev\flask\stonks_visualization\node_modules\react-vis\dist\style.css);
 * {
   margin: 0;
   padding: 0;
