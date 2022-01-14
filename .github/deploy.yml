@@ -1,0 +1,42 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CICD-for-Stonks
+
+on:
+  push:
+    branches:
+      - main
+
+  # 開放可以手動啟動此流程的權限
+  workflow_dispatch:
+
+jobs:
+  # 架構：jobs -> tasks
+  # tasks 彼此可以平行進行
+  # tasks 內的 steps 則是一步做完才下一步
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # 讓 action 可以有存放庫權限的 API
+      - uses: actions/checkout@v2
+      # 使用別人寫好的安裝 Action
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 14.x
+
+      # 安裝 npm 套件
+      - name: Install packages
+        run: npm install
+        
+      # 建置專案並部署到 GitHub-pages，別人寫好的 yml
+      - name: Build
+        run: npm run build
+        
+      - name: Deploy to github-pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
