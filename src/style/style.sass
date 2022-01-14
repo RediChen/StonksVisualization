@@ -3,6 +3,7 @@
 @import "./_reset"
 // along w/ RWD modules
 @import "../../node_modules/react-vis/dist/style"
+//D:\AppDev\flask\stonks_visualization\node_modules\react-vis\dist\styles\examples.scss
 // 可指定僅要匯入的部份
 
 body
@@ -42,9 +43,12 @@ body
             @extend .center
             @include rwd-for($from: 'lg')
                 flex-basis: 50%
-            & > .rv-xy-plot svg
+            & > .rv-xy-plot
                 width: 100% !important
                 height: 100% !important
+            & > .rv-xy-plot > svg
+                width: 100%
+                height: 100%
 
 // TEMP END
 

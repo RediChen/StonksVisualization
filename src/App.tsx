@@ -3,7 +3,7 @@ import dataTemp from './data/data-temp'
 
 const dataHandled = dataTemp.map(data => ({x: data.x, y: data.y}));
 
-// todo 實作互動機制 onXxxx
+// todo 實作互動機制 onWhatever
 
 const App = () => {
   return (

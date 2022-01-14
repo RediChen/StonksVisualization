@@ -128,9 +128,14 @@ body {
   }
 }
 
-.panel .wrap .monitor > .rv-xy-plot svg {
+.panel .wrap .monitor > .rv-xy-plot {
   width: 100% !important;
   height: 100% !important;
+}
+
+.panel .wrap .monitor > .rv-xy-plot > svg {
+  width: 100%;
+  height: 100%;
 }
 
 .center, #root, .panel .wrap .monitor {
