@@ -1,0 +1,15 @@
+{
+  "short_name": "Stonks VS",
+  "name": "Visual Stonks",
+  "icons": [
+    {
+      "src": "stonks_favicon.ico",
+      "sizes": "64x64 48x48 32x32 24x24",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f2f2dd",
+  "background_color": "#000000"
+}
