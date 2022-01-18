@@ -19,10 +19,10 @@ const App = () => {
               onNearestX={(value, { innerX }) => setFocus([innerX])} />
             <Crosshair value={focus}>
               {/* <div style={{ backgroundColor: "#fff", width: '50px', borderRadius: '50%' }}>ahhh</div> */}
-              {/* <div style={{ background: 'black' }}>
+              <div style={{ background: '#fff' }}>
                 <h3>Values of crosshair:</h3>
                 <p>{focus} NTD</p>
-              </div> */}
+              </div>
             </Crosshair>
           </XYPlot>
         </div>
