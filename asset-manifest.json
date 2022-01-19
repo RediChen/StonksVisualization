@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.378010b8.css",
-    "main.js": "/static/js/main.bf401610.js",
-    "index.html": "/index.html",
-    "main.378010b8.css.map": "/static/css/main.378010b8.css.map",
-    "main.bf401610.js.map": "/static/js/main.bf401610.js.map"
+    "main.css": "/StonksVisualization/static/css/main.378010b8.css",
+    "main.js": "/StonksVisualization/static/js/main.bf401610.js",
+    "index.html": "/StonksVisualization/index.html",
+    "main.378010b8.css.map": "/StonksVisualization/static/css/main.378010b8.css.map",
+    "main.bf401610.js.map": "/StonksVisualization/static/js/main.bf401610.js.map"
   },
   "entrypoints": [
     "static/css/main.378010b8.css",
