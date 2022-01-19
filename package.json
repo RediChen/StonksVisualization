@@ -1,5 +1,6 @@
 {
   "name": "stonks_visualization",
+  "homepage": "https://redichen.github.io/StonksVisualization/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
