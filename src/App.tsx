@@ -1,33 +1,27 @@
 import { useState } from "react";
 import {
-  LineSeries, XYPlot, Crosshair
+  LineSeries, XYPlot, Crosshair, XAxis, YAxis, LineSeriesPoint
 } from "react-vis";
 import dataTemp from './data/data-temp'
 
 const dataHandled = dataTemp.map(data => ({ x: data.x, y: data.y }));
 
-// todo 實作互動機制 onWhatever
 
 const App = () => {
-  const [focus, setFocus] = useState<number[]>([]);
+  const [focusedPoint, setFocusedPoint] = useState<LineSeriesPoint[]>([]);
   return (
     <div className="panel">
-      <div className="wrap">
-        <div className="monitor">
-          <XYPlot width={900} height={400} onMouseLeave={() => setFocus([])}>
-            <LineSeries data={dataHandled}
-              onNearestX={(value, { innerX }) => setFocus([innerX])} />
-            <Crosshair value={focus}>
-              {/* <div style={{ backgroundColor: "#fff", width: '50px', borderRadius: '50%' }}>ahhh</div> */}
-              <div style={{ background: '#fff' }}>
-                <h3>Values of crosshair:</h3>
-                <p>{focus} NTD</p>
-              </div>
-            </Crosshair>
-          </XYPlot>
-        </div>
+      <div className="monitor">
+        <XYPlot width={750} height={400} onMouseLeave={() => setFocusedPoint([])}>
+          <XAxis />
+          <YAxis orientation='right' />
+          <LineSeries data={dataHandled} onNearestX={d => setFocusedPoint([d])} />
+          <Crosshair values={focusedPoint}>
+            <div></div>
+          </Crosshair>
+        </XYPlot>
       </div>
-      <h1>TEST: {focus}</h1>
+      <h1>TEST</h1>
     </div>
   );
 }
