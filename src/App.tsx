@@ -16,9 +16,7 @@ const App = () => {
           <XAxis />
           <YAxis orientation='right' />
           <LineSeries data={dataHandled} onNearestX={d => setFocusedPoint([d])} />
-          <Crosshair values={focusedPoint}>
-            <div></div>
-          </Crosshair>
+          <Crosshair values={focusedPoint} />
         </XYPlot>
       </div>
       <h1>TEST</h1>
