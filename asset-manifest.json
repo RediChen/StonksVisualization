@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/StonksVisualization/static/css/main.6eb69924.css",
-    "main.js": "/StonksVisualization/static/js/main.b3b1a096.js",
+    "main.css": "/StonksVisualization/static/css/main.6357dba7.css",
+    "main.js": "/StonksVisualization/static/js/main.48c03ab7.js",
     "index.html": "/StonksVisualization/index.html",
-    "main.6eb69924.css.map": "/StonksVisualization/static/css/main.6eb69924.css.map",
-    "main.b3b1a096.js.map": "/StonksVisualization/static/js/main.b3b1a096.js.map"
+    "main.6357dba7.css.map": "/StonksVisualization/static/css/main.6357dba7.css.map",
+    "main.48c03ab7.js.map": "/StonksVisualization/static/js/main.48c03ab7.js.map"
   },
   "entrypoints": [
-    "static/css/main.6eb69924.css",
-    "static/js/main.b3b1a096.js"
+    "static/css/main.6357dba7.css",
+    "static/js/main.48c03ab7.js"
   ]
 }
